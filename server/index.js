@@ -13,12 +13,15 @@ app.get('/api/users', (req, res) => {
 })
 
 app.get('/weather/:temperature', (req, res) => {
-    const phrase = `<h3> It was ${req.params.temperature} today </h3>`;
+    if(temperature === 'HOT'){
+        const { temperature } = req.params;
+        const phrase = `<h3> It was ${temperature} today</h3>`;
+    }else {
+        const { temperature } = req.params;
+        const phrase = `<h3> It was ${temperature} today</h3>`;
+    
+    }
+    
     res.status(200).send(phrase);
 })
 
-app.get('/weather/:temperature', (req, res) => {
-    const { temperature } = req.params;
-    const phrase = `<h3> It was ${temperature} today</h3>`;
-    res.status(200).send(phrase);
-})
